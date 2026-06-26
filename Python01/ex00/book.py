@@ -18,3 +18,15 @@ class Book:
 		self.last_update = last_update
 		self.creation_date = creation_date
 		self.recipes_list = recipes_list
+	def get_recipe_by_name(self, name):
+		"""Prints a recipe with the name \texttt{name} and returns the instance"""
+
+	def get_recipes_by_types(self, recipe_type):
+		"""Gets all recipes names for a given recipe_type """
+
+	def add_recipe(self, recipe):
+		"""Adds a recipe to the book and updates last_update"""
+	if not isinstance(recipe, Recipe)
+		print("not a recipe, try again")
+		return
+	self.recipes_list[recipe.get_name()] = recipe

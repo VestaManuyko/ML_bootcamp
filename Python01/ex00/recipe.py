@@ -9,8 +9,8 @@ class Recipe:
 		if not isinstance(cooking_time, int):
 			print("cooking_time should be int")
 			return
-		if not isinstance(ingredients, list):
-			print("ingridients should be list")
+		if not all(isinstance(item, str) for item in ingredients):
+			print("ingridients should be list of strings")
 			return
 		if not isinstance(description, str) and description is not None:
 			print("description should be string")
@@ -19,10 +19,19 @@ class Recipe:
 			print("recipe_type should be string")
 			return
 		self.name = name
+		if cooking_lvl > 5 or cooking_lvl < 1:
+			print("Wrong cooking_lvl")
+			return
 		self.cooking_lvl = cooking_lvl
+		if cooking_time < 0:
+			print("Wrong cooking_time")
+			return
 		self.cooking_time = cooking_time
 		self.ingredients = ingredients
 		self.description = description
+		if recipe_type not in ["starter", "lunch", "dinner"]:
+			print("Wrong recipe_type")
+			return
 		self.recipe_type = recipe_type
 	def __str__(self):
 		"""Returns the string to print with the recipe’s info"""
@@ -35,3 +44,5 @@ class Recipe:
 			txt += "\nDescription:" + self.description
 		txt += "\nRecipe_type:" + self.recipe_type
 		return txt
+	def get_name(self):
+		return self.name
