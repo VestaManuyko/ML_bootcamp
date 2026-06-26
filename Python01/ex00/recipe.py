@@ -1,5 +1,5 @@
 class Recipe:
-	def __init__(self, name:str, cooking_lvl:int, cooking_time:int, ingredients:list, description:str, recipe_type:str):
+	def __init__(self, name:str, cooking_lvl:int, cooking_time:int, ingredients:list, recipe_type:str, description:str = None):
 		if not isinstance(name, str):
 			print("name should be string")
 			return
@@ -9,10 +9,10 @@ class Recipe:
 		if not isinstance(cooking_time, int):
 			print("cooking_time should be int")
 			return
-		if not isinstance(ingridients, list):
+		if not isinstance(ingredients, list):
 			print("ingridients should be list")
 			return
-		if not isinstance(description, str) and not isinstance(description, None):
+		if not isinstance(description, str) and description is not None:
 			print("description should be string")
 			return
 		if not isinstance(recipe_type, str):
@@ -24,3 +24,14 @@ class Recipe:
 		self.ingredients = ingredients
 		self.description = description
 		self.recipe_type = recipe_type
+	def __str__(self):
+		"""Returns the string to print with the recipe’s info"""
+		txt = "Name:" + self.name + "\nCooking_lvl:" + str(self.cooking_lvl)
+		txt += "\nCooking_time:" + str(self.cooking_time)
+		txt += "\nIngredients:"
+		for item in self.ingredients:
+			txt += item
+		if isinstance(self.description, str):
+			txt += "\nDescription:" + self.description
+		txt += "\nRecipe_type:" + self.recipe_type
+		return txt
